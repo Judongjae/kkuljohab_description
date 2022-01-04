@@ -19,10 +19,16 @@ const postSchema = new mongoose.Schema(
       required: false,
       unique: false,
     },
+    currentDate: {
+      type: String,
+      required: false,
+      unique: false,
+    },
   },
   { versionKey: false }
 );
 
 const Post = mongoose.model("Post", postSchema);
 
-export { Post, Like };
+export { Post };
+//post를 내보낸다.

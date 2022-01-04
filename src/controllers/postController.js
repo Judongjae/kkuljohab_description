@@ -31,11 +31,12 @@ function dateFormat(date) {
 export const postcreate = async (req, res) => {
   const post = new Post();
   try {
-    const { postTitle, postContent, mainlist } = req.body;
-    let currnetDate = dateFormat(postDate);
+    const { postTitle, postContent } = req.body;
+    let currentDate = dateFormat(postDate);
     const newPost = await Post.create({
       postTitle,
       postContent,
+      currentDate,
     });
     return res.status(200).send({ success: true, newPost: newPost });
   } catch (err) {
