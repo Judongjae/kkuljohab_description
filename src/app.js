@@ -1,3 +1,4 @@
+//npm run start가 실행 문
 import express from "express";
 //express 모듈을 쓰겠다.
 import dotenv from "dotenv";
@@ -37,11 +38,8 @@ try {
   console.log("mongo connect error : ", error);
 }
 
-app.use("api/v1/post", postRouter);
+app.use("/api/v1/post", postRouter);
 // api/v1/post를 기반으로 쓰는 것들
 app.get("/", (req, res) => {
   res.send("Hello World");
 }); // "/" 일 때 Hello World를 보낸다.
-//dddd
-//dddd
-//dddd

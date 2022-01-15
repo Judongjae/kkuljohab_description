@@ -3,7 +3,7 @@ import express from "express";
 import {
   //postlist,
   postcreate,
-  //   postfind,
+  postfind,
   //   postupdate,
   //   postdelete,
 } from "../controllers/postController.js";
@@ -13,7 +13,7 @@ const postRouter = express.Router();
 
 //postRouter.get("/", postlist);
 postRouter.post("/", postcreate);
-//postRouter.get("/", postfind);
+postRouter.get("/postid", postfind);
 //postRouter.patch("/", postupdate);
 //postRouter.patch("/", postdelete);
 

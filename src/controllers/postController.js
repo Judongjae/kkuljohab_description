@@ -46,3 +46,24 @@ export const postcreate = async (req, res) => {
       .send({ success: false, msg: "게시글 등록 중 에러 발생" });
   }
 };
+
+export const postfind = async (req, res) => {
+  console.log(req.params.postid);
+  Post.findOne({ _id: req.params.postid }, (err, post) => {
+    if (err) return res.status(500).send({ error: "못찾겠음" });
+    if (!post)
+      return res
+        .status(400)
+        .send({ error: "해당 포스트가 존재하지 않습니다." });
+    res.status(200).send(post);
+  });
+};
+
+// export const postupdate = async (req, res) => {
+//   Post.findOne({ _id: req.params.postid }, (err, post) => {
+//     if(err) return res.status(500).send({ error: "Datebase Failure!"})
+//   });
+//   try {
+//     const { postTitle, postContent } = req.body;
+//   } catch {}
+// };
