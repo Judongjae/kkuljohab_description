@@ -38,6 +38,7 @@ export const postcreate = async (req, res) => {
       postContent,
       currentDate,
     });
+    console.log("tt");
     return res.status(200).send({ success: true, newPost: newPost });
   } catch (err) {
     console.log("게시글 등록 기능 중 발생한 에러: ", err);
@@ -48,9 +49,19 @@ export const postcreate = async (req, res) => {
 };
 
 export const postfind = async (req, res) => {
-  console.log(req.params.postid);
   Post.findOne({ _id: req.params.postid }, (err, post) => {
     if (err) return res.status(500).send({ error: "못찾겠음" });
+    if (!post)
+      return res
+        .status(400)
+        .send({ error: "해당 포스트가 존재하지 않습니다." });
+    res.status(200).send(post);
+  });
+};
+
+export const postupdate = async (req, res) => {
+  Post.findOneAndUpdate({ _id: req.params.postid }, (err, post) => {
+    if (err) return res.status(500).send({ error: "수정안됨" });
     if (!post)
       return res
         .status(400)

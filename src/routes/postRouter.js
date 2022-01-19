@@ -13,7 +13,7 @@ const postRouter = express.Router();
 
 //postRouter.get("/", postlist);
 postRouter.post("/", postcreate);
-postRouter.get("/postid", postfind);
+postRouter.get("/:postid", postfind);
 //postRouter.patch("/", postupdate);
 //postRouter.patch("/", postdelete);
 
