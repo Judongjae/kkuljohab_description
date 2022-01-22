@@ -78,3 +78,13 @@ export const postupdate = async (req, res) => {
 //못만들게 하는 함수에서  게시글 하나 만들 때 마다
 //데이터베이스를 돌리는건 오버워킹?이다. 이걸
 //어찌해야 될까?
+
+export const postdelete = async (req, res) => {
+  Post.findOneAndDelete({ _id: req.params.postid }, (err, post) => {
+    console.log(req.params.postid);
+    if (err) return res.status(500).send({ error: "에러뜸 ㅅㄱ" });
+    if (!post)
+      return res.status(400).send({ error: "존재하지 않는 게시물입니다." });
+    res.status(200).send({ message: "삭제 완료" });
+  });
+};
