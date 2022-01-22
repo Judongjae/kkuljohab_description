@@ -4,28 +4,14 @@ import mongoose from "mongoose";
 const postSchema = new mongoose.Schema(
   // postSchema는 새로운 몽구스 스키마이다. 그 구성은 아래와 같다.
   {
-    postId: {
-      type: String,
-      //문자열타입
-      required: true,
-      // not null과 같은 기능 true면 값이 있어야만 함 null값이 들어갈 수 없음
-      unique: true,
-      //true면 고유한 값이 들어가야함
-    },
     postTitle: {
       type: String,
-      required: true,
-      unique: false,
     },
     postContent: {
       type: String,
-      required: true,
-      unique: false,
     },
     currentDate: {
       type: String,
-      required: true,
-      unique: false,
     },
   },
   { versionKey: false }
