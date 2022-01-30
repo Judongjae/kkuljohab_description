@@ -87,4 +87,3 @@ export const postdelete = async (req, res, post) => {
     res.status(200).send({ message: "삭제 완료", post });
   });
 };
-//dddd
