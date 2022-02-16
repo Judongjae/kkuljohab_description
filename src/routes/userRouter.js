@@ -1,4 +1,3 @@
-import { authMiddleware } from "../middlewares/authMiddlewares.js";
 import express from "express";
 import {
   //logincheck,
