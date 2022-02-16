@@ -1,3 +1,7 @@
+import userRouter from "../src/routes/userRouter.js";
+//저 위치의 userRouter를 쓰겠다.
+import postRouter from "../src/routes/postRouter.js";
+// 저 위치의 postRouter를 쓰겠다.
 //npm run start가 실행 문
 import express from "express";
 //express 모듈을 쓰겠다.
@@ -5,8 +9,7 @@ import dotenv from "dotenv";
 //dotenv모듈을 쓰겠다.
 import mongoose from "mongoose";
 //mongoose 모듈을 쓰겠다.
-import postRouter from "../src/routes/postRouter.js";
-// 저 위치의 postRouter를 쓰겠다.
+
 dotenv.config();
 //dotenv를 사용하겠다.
 const app = express();
@@ -38,9 +41,10 @@ try {
   console.log("mongo connect error : ", error);
 }
 
-app.use("/api/v1/post", postRouter);
-// api/v1/post를 기반으로 쓰는 것들
 app.get("/", (req, res) => {
   res.send("Hello World");
 }); // "/" 일 때 Hello World를 보낸다.
-//////
+app.use("/api/v1/users", userRouter);
+// api/v1/post를 기반으로 쓰는 것들
+app.use("/api/v1/post", postRouter);
+// api/v1/post를 기반으로 쓰는 것들
